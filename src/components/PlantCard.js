@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function PlantCard({ plant }) {
+export default function PlantCard({ plant }) {
   const [isInStock, setIsInStock] = useState(true);
 
   function handleClick() {
@@ -22,5 +22,3 @@ function PlantCard({ plant }) {
     </li>
   );
 }
-
-export default PlantCard;

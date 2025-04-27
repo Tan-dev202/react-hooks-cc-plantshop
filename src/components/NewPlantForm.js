@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-function NewPlantForm({ addPlant }) {
+export default function NewPlantForm({ addPlant }) {
   const [formData, setFormData] = useState({
     name: "",
     image: "",
     price: 0,
   });
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
 
     fetch("http://localhost:6001/plants", {
       method: "POST",
@@ -28,10 +28,12 @@ function NewPlantForm({ addPlant }) {
       });
   }
 
-  function handleChange(e) {
+  function handleChange(event) {
     const value =
-      e.target.name === "price" ? parseFloat(e.target.value) : e.target.value;
-    setFormData({ ...formData, [e.target.name]: value });
+      event.target.name === "price"
+        ? parseFloat(event.target.value)
+        : event.target.value;
+    setFormData({ ...formData, [event.target.name]: value });
   }
 
   return (
@@ -65,5 +67,3 @@ function NewPlantForm({ addPlant }) {
     </div>
   );
 }
-
-export default NewPlantForm;
